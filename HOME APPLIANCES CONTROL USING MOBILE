@@ -1,0 +1,48 @@
+// Light class
+public class Light {
+    private boolean isOn;
+
+    public Light() {
+        isOn = false;
+    }
+
+    public void turnOn() {
+        isOn = true;
+        // Code to send command to actual light device over the network
+    }
+
+    public void turnOff() {
+        isOn = false;
+        // Code to send command to actual light device over the network
+    }
+
+    public boolean isLightOn() {
+        return isOn;
+    }
+}
+
+// Android activity class
+public class MainActivity extends AppCompatActivity {
+    private Light livingRoomLight;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        livingRoomLight = new Light();
+
+        Button turnOnButton = findViewById(R.id.turnOnButton);
+        Button turnOffButton = findViewById(R.id.turnOffButton);
+
+        turnOnButton.setOnClickListener(v -> {
+            livingRoomLight.turnOn();
+            // Update UI or send feedback to user
+        });
+
+        turnOffButton.setOnClickListener(v -> {
+            livingRoomLight.turnOff();
+            // Update UI or send feedback to user
+        });
+    }
+}
